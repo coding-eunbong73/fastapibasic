@@ -11,3 +11,8 @@
 
 ### 실행
     uvicorn main:app --reload
+
+### Heroku 사이트 등록 필요 파일
+- Procfile 
+- runtime.txt
+- requirements.txt

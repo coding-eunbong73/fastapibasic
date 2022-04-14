@@ -4,10 +4,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL");
-if SQLALCHEMY_DATABASE_URL is None:
-    SQLALCHEMY_DATABASE_URL = "sqlite:///./todos.db"
-else:
+SQLALCHEMY_DATABASE_URL = "sqlite:///./todos.db"
+DATABASE_URL = os.getenv("DATABASE_URL");
+if DATABASE_URL :
+    SQLALCHEMY_DATABASE_URL = DATABASE_URL
+
+    # Heroku
     if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
         SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
