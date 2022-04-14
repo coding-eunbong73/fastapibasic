@@ -16,3 +16,13 @@
 - Procfile 
 - runtime.txt
 - requirements.txt
+
+### docker (container) 관련
+#### build 방법 
+    git clone https://xxx.xxx.xx/  .
+    sudo docker build --tag fa-basic .
+    sudo docker images
+
+#### 실행방법
+    sudo docker run -d --name fastapi -p 8000:8000  -e DATABASE_URL=mysql\+pymysql:\/\/root:New1234\!\!\@34\.132\.246\.153:3306\/todoapp  fa-basic
+    sudo docker run -d --name fastapi -p 8000:8000    fa-basic
