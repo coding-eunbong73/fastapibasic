@@ -19,21 +19,29 @@
 
 ### docker (container) 관련
 #### build 방법 
-    git clone https://xxx.xxx.xx/  .
-    sudo docker build --tag fastapi-eb:0.1 .
-    sudo docker images
+    git clone https://github.com/coding-eunbong73/fastapibasic.git  .
+    docker build --tag fastapi-eb:0.1 .
+    docker images
 
 #### 실행방법
-    sudo docker run -d --name fastapi -p 8000:8000  fastapi-eb:0.1
-    sudo docker run -d --name fastapi -p 8000:8000  -e DATABASE_URL=mysql\+pymysql:\/\/root:New1234\!\!\@localhost:3306\/todoapp  fastapi-eb:0.1
+    docker run -d --name fastapi -p 8000:8000  fastapi-eb:0.1
+    docker run -d --name fastapi -p 8000:8000  -v dbdata:/code/data  fastapi:0.1
+    docker run -d --name fastapi -p 8000:8000  -e DATABASE_URL=mysql\+pymysql:\/\/root:New1234\!\!\@localhost:3306\/todoapp  fastapi-eb:0.1
 
+#### Confirm
+    In Browser, http://[IP]:8000
+
+#### Docker volume Confirm
+    docker volume inspect dbdata
+    docker volume ls
+    docker exec fastapi-ui ls /code/data
 
 ### docker.io에 push
-    sudo docker login
-    sudo docker build -t eblee73/fastapi-eb:0.1 .
-    sudo docker push eblee73/fastapi-eb:0.1
+    docker login
+    docker build -t eblee73/fastapi-eb:0.1 .
+    docker push eblee73/fastapi-eb:0.1
 
 ### docker.io에 pull 받아 실행
-    sudo docker run -d --name fastapi -p 8000:8000  eblee73/fastapi-eb:0.1
+    docker run -d --name fastapi -p 8000:8000  eblee73/fastapi-eb:0.1
 
     
